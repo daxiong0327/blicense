@@ -239,7 +239,7 @@ func NewCertificateInfoByPrivateBytes(authInfo *AuthorizationInfo, rsaPrivateKey
 	return authInfo.AppName + "_" + authInfo.Ip + "_certificate.json", nil
 }
 
-// ParseCertificateByPublicKeyFile 根据公钥路读出证书，验证签发的证书是否有效
+// ParseCertificateByPublicKeyFile 根据公钥路径读出证书，验证签发的证书是否有效
 func ParseCertificateByPublicKeyFile(cert *CertificateInfo, rsaPubKeyPath string) (*AuthorizationInfo, error) {
 	//拆解license
 	certDataStr, signatureInfo, aesKey := parseCertificate(cert)

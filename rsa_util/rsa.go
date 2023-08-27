@@ -20,7 +20,7 @@ func GetKeys(pairEncryptionKey string) error {
 	x509Privatekey := x509.MarshalPKCS1PrivateKey(privateKey)
 
 	//创建一个用来保存私钥的以.pem结尾的文件
-	fp, _ := os.Create(pairEncryptionKey + "_private.pem")
+	fp, _ := os.Create("../cache_cert/" + pairEncryptionKey + "_private.pem")
 	defer fp.Close()
 
 	//将私钥字符串设置到pem格式块中
@@ -42,7 +42,7 @@ func GetKeys(pairEncryptionKey string) error {
 		Type:  "PUBLIC KEY",
 		Bytes: x509PublicKey,
 	}
-	file, _ := os.Create(pairEncryptionKey + "_PublicKey.pem")
+	file, _ := os.Create("../cache_cert/" + pairEncryptionKey + "_PublicKey.pem")
 	defer file.Close()
 
 	//转码为pem并输出到文件中

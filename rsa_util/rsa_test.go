@@ -26,10 +26,10 @@ func TestRsaPvEPuD(t *testing.T) {
 		err := GetKeys(pairEncryptionKey)
 		convey.So(err, convey.ShouldBeNil)
 		//公钥加密
-		cipherText, err := RSAEncrypter("./"+pairEncryptionKey+"_PublicKey.pem", []byte(originStr))
+		cipherText, err := RSAEncrypter("../cache_cert/"+pairEncryptionKey+"_PublicKey.pem", []byte(originStr))
 		convey.So(err, convey.ShouldBeNil)
 		//私钥解密
-		afterDecrypter, err := RSADecrypter("./"+pairEncryptionKey+"_private.pem", cipherText)
+		afterDecrypter, err := RSADecrypter("../cache_cert/"+pairEncryptionKey+"_private.pem", cipherText)
 		convey.So(err, convey.ShouldBeNil)
 
 		decrypterStr := string(afterDecrypter)
@@ -50,7 +50,7 @@ func TestVerificationSignature(t *testing.T) {
 		sign, err := RsaSignWithSha256ByFile([]byte(originStr), "./"+pairEncryptionKey+"_private.pem")
 		convey.So(err, convey.ShouldBeNil)
 		//验证签名
-		result, err := RsaVerySignWithSha256ByFile([]byte(originStr), sign, "./"+pairEncryptionKey+"_PublicKey.pem")
+		result, err := RsaVisaSignWithSha256ByFile([]byte(originStr), sign, "./"+pairEncryptionKey+"_PublicKey.pem")
 		convey.So(err, convey.ShouldBeNil)
 		convey.So(result, convey.ShouldBeTrue)
 

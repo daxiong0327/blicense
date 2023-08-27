@@ -11,10 +11,10 @@ import (
 const issuer = "daxiong"
 
 // CheckLicenseValidity 检查证书有效性,验证公钥的实际内容
-func CheckLicenseValidity(certificatePath, publicKey string) (bool, error) {
-	authInfo, err := CheckLicenseByPublicKeyBytes(certificatePath, []byte(publicKey))
+func CheckLicenseValidity(certificateStr, publicKey string) (bool, error) {
+	authInfo, err := CheckLicenseByPublicKeyBytes(certificateStr, []byte(publicKey))
 	if err != nil {
-		return false, errors.New("check license validity failure, error info is:" + certificatePath + "\nerror info is:" + err.Error())
+		return false, errors.New("check license validity failure, error info is:" + certificateStr + "\nerror info is:" + err.Error())
 	}
 	//验证签发人
 	if authInfo.Issuer != "issuer" {
