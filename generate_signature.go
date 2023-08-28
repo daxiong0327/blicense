@@ -338,9 +338,9 @@ func CheckLicenseByPublicKeyFile(certificatePath, aesPublicKey string) (*Authori
 }
 
 // CheckLicenseByPublicKeyBytes 读取签证内容，进行签证校验,publicKey 为字节流公钥
-func CheckLicenseByPublicKeyBytes(certificatePath string, publicKeyBytes []byte) (*AuthorizationInfo, error) {
+func CheckLicenseByPublicKeyBytes(certificateBytes string, publicKeyBytes []byte) (*AuthorizationInfo, error) {
 	//从文件读出签证信息
-	fp, err := os.Open(certificatePath)
+	fp, err := os.Open(certificateBytes)
 	defer fp.Close()
 	if err != nil {
 		return nil, errors.New("open certificate file error " + err.Error())
